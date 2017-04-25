@@ -37,9 +37,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
-//var index = require('./routes/index')(express);
+var index = require('./routes/index');
 var jokes = require('./routes/jokes')(express);
-//app.use(index);
+app.use(index);
 app.use(jokes);
 
 // catch 404 and forward to error handler
