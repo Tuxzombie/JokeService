@@ -5,8 +5,9 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-
 var app = express();
+
+app.set('port', (process.env.PORT || 8080)); // Set the port
 
 // Setup mongoDB w. mongoose
 var mongoose = require('mongoose');
@@ -22,7 +23,7 @@ mongoConn.once('open', function() {
 });
 
 //Export models...
-var Joke = require('./models/joke');
+var joke = require('./models/joke');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,10 +37,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
-var index = require('./routes/index');
-var users = require('./routes/jokes');
-app.use('/', index);
-app.use('/users', users);
+//var index = require('./routes/index')(express);
+var jokes = require('./routes/jokes')(express);
+//app.use(index);
+app.use(jokes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,6 +58,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(app.get('port'), function () {
+    console.log('app is running on port', app.get('port'));
 });
 
 module.exports = app;

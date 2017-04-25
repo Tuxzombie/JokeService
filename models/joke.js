@@ -4,13 +4,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var joke = new Schema({
+var Joke = new Schema({
     setup: String,
     punchline: String
-});
+},  {collection: 'joke', versionKey: false});
 
-joke.methods.printJoke = function() {
-    console.log(this.setup + " ........... " + this.punchline);
-};
-
-module.exports = mongoose.model('Joke', joke);
+module.exports = mongoose.model('joke', Joke);
