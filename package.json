@@ -2,8 +2,9 @@
   "name": "jokeservice",
   "version": "0.0.0",
   "private": true,
+  "main": "app.js"
   "scripts": {
-    "start": "app.js"
+    
   },
   "dependencies": {
     "body-parser": "~1.17.1",
