@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'Dad\'s Jokeservice',
         setup: 'Welcome to Dad\'s wild world of terrible jokes!',
-        punchline: '... So Why couldn\'t the bicycle stand up by itself? It was two tired.'
+        punchline: '... So why couldn\'t the bicycle stand up by itself? It was two tired.'
     });
 });
 

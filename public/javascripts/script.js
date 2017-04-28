@@ -3,25 +3,26 @@
  */
 
 $(document).ready(function () {
+
     var arrJokes = [];
     var currentJoke = 0;
-    var sectJokes = $('#sectionJoke');
+    var sectJokes = $('#container');
 
     $.getJSON("/api/jokes", function (result) {
         for(var i = 0; i < result.length; i++) {
             arrJokes.push(result[i]);
-            console.log(arrJokes);
         }});
 
     function setJoke() {
         sectJokes.empty();
-
-        var source   = "<p>{{setup}}</p><p>{{punchline}}</p>";
-        var template = Handlebars.compile(source);
-        var data = {
-            setup: arrJokes[currentJoke].setup,
-            punchline: arrJokes[currentJoke].punchline };
-        sectJokes.html(template(data));
+        $.get('../views/index.hbs', function (template) {
+            $('#container').empty();
+            var compiled = Handlebars.compile(template);
+            var html = compiled({
+                    setup: arrJokes[currentJoke].setup,
+                    punchline: arrJokes[currentJoke].punchline });
+            $('#container').append(html);
+        });
     }
 
     function nextJoke() {
@@ -51,4 +52,17 @@ $(document).ready(function () {
     $('#btnPrev').click(function() {
        prevJoke();
     });
+
+    function postJoke() {
+        $.ajax({
+            type: "POST",
+            url: '/api/jokes',
+            data: '{"setup": "", "punchline": ""}',
+            success: function() {
+                alert("Your joke has been posted!")
+            },
+            dataType: json
+        });
+    }
+
 });

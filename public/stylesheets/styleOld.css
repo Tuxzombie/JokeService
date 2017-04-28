@@ -1,0 +1,55 @@
+body {
+  font: 20px "Palatino Linotype", Helvetica, Arial, sans-serif;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  background-color: whitesmoke;
+}
+
+h1 {
+  text-align: center;
+}
+
+#sectionJoke {
+  width: 500px;
+  height: 150px;
+  overflow: auto;
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#pJoke {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+button {
+  background-color: grey;
+  color: white;
+  border-style: none;
+  padding: 10px 10px;
+  text-align: center;
+  display: inline-block;
+  font: 18px "Palatino Linotype", Helvetica, Arial, sans-serif;
+}
+
+button:active {
+  background-color: dimgrey;
+}
+
+#buttons {
+  text-align: justify;
+  margin: 0 auto;
+  width: 50%;
+}
+
+#formPost {
+  display: none;
+}

@@ -26,8 +26,8 @@ mongoConn.once('open', function() {
 var joke = require('./models/joke');
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.set('views', './public/views');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
