@@ -5,33 +5,42 @@ var otherJokeServices = [];
 var otherJokes = [];
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
 
     var options = {json: true, url: 'https://krdo-joke-registry.herokuapp.com/api/services'};
     request(options, function (error, response, body) {
-        if(error) {
+        if (error) {
             console.log("Error getting other joke services.")
         } else {
-            for(var i = 0; i < body.length; i++) {
+            for (var i = 0; i < body.length; i++) {
                 otherJokeServices.push(body[i]);
 
                 options = {json: true, url: body[i].address + 'api/jokes'};
-                console.log(body[i].address);
+                console.log(otherJokeServices[i].address);
 
-                request(options, function (error2, response, jokeBody) {
-                    if(error2) {
-                        console.log("Invalid url")
-                    } else {
-                        for(var m = 0; m < jokeBody.length; m++) {
-
-                            otherJokes.push(
-                                {'setup': jokeBody[m].setup,
-                                    'punchline': jokeBody[m].punchline,
-                                    'fromServer': otherJokeServices[otherJokeServices.length - 1].address});
-                        }
-                        console.log(otherJokes)
-                    }
-                });
+                // request(options, function (error2, response, jokeBody) {
+                //     if (error2) {
+                //         console.log("Invalid url")
+                //     } else if (response.statusCode == 200) {
+                //         console.log('Responded with statuscode: ' + response.statusCode);
+                //         console.log('Fetching jokes from server URL: ' + otherJokeServices[i].address);
+                //         for (var m = 0; m < jokeBody.length; m++) {
+                //
+                //             otherJokes.push(
+                //                 {
+                //                     'setup': jokeBody[m].setup,
+                //                     'punchline': jokeBody[m].punchline,
+                //                     'fromServer': otherJokeServices[otherJokeServices.length - 1].address
+                //                 });
+                //         }
+                //         // console.log(otherJokes);
+                //
+                //     } else {
+                //         console.log('Responded with statuscode: ' + response.statusCode)
+                //     }
+                //
+                //
+                // });
             }
         }
 
