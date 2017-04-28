@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     var arrJokes = [];
     var currentJoke = 0;
-    var sectJokes = $('#container');
+    var sectJokes = $('#jokePanel');
 
     $.getJSON("/api/jokes", function (result) {
         for(var i = 0; i < result.length; i++) {
@@ -16,12 +16,12 @@ $(document).ready(function () {
     function setJoke() {
         sectJokes.empty();
         $.get('../views/index.hbs', function (template) {
-            $('#container').empty();
+            sectJokes.empty();
             var compiled = Handlebars.compile(template);
             var html = compiled({
                     setup: arrJokes[currentJoke].setup,
                     punchline: arrJokes[currentJoke].punchline });
-            $('#container').append(html);
+            sectJokes.append(html);
         });
     }
 

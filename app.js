@@ -18,6 +18,7 @@ mongoConn.on('error', function(err) {
     console.error(err.message);
     console.error("MongoDB connection failed");
 });
+
 mongoConn.once('open', function() {
     console.log("MongoDB connection open");
 });

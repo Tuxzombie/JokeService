@@ -18,6 +18,6 @@ button {
 /*CLASSES*/
 /*======================*/
 
-.panel-height {
-    height: 200px;
+.panel-body {
+    min-height: 200px;
 }
