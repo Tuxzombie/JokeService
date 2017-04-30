@@ -45,6 +45,24 @@ $(document).ready(function () {
         }
     }
 
+    function postJoke() {
+        var jokeData = {"setup": $('setup').text(), "punchline": $('punchline').text()};
+
+        if(data.setup && data.punchline) {
+            $.post({
+                type: "POST",
+                url: 'http://jokeService-jeppe-steen.herokuapp.com/api/jokes',
+                data: JSON.stringify(jokeData),
+                success: function() {
+                    alert("Your hilarious joke has been posted!")
+                },
+                dataType: 'json'
+            });
+        } else {
+            alert("That is not a funny joke, punk! Jokes kinda need text to be funny!!")
+        }
+    }
+
     $('#btnNext').click(function() {
         nextJoke();
     });
@@ -53,16 +71,8 @@ $(document).ready(function () {
        prevJoke();
     });
 
-    function postJoke() {
-        $.ajax({
-            type: "POST",
-            url: '/api/jokes',
-            data: '{"setup": "", "punchline": ""}',
-            success: function() {
-                alert("Your joke has been posted!")
-            },
-            dataType: json
-        });
-    }
+    $('#btnPost').click(function() {
+        postJoke()
+    });
 
 });
