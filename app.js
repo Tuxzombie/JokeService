@@ -141,7 +141,6 @@ setInterval(function() {
     otherJokeServices = [];
     otherJokes = [];
     requestServers();
-
     global.otherJokes = otherJokes;
 }, 10000);
 
