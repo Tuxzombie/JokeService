@@ -52,7 +52,7 @@ $(document).ready(function () {
             $.post({
                 type: "POST",
                 url: 'https://jokeService-jeppe-steen.herokuapp.com/api/jokes',
-                data: JSON.stringify(jokeData),
+                data: jokeData,
                 success: function() {
                     alert("Your hilarious joke has been posted!")
                 },
