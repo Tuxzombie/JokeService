@@ -1,67 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>{{title}}</title>
 
-      <link rel='stylesheet' href='stylesheets/style.css'/>
+    <link rel='stylesheet' href='stylesheets/style.css'/>
 
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
-      <script src='javascripts/script.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
+    <script src='javascripts/script.js'></script>
 
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
-  </head>
-  <body>
-  <div class="container text-center">
+</head>
+<body>
+<div class="container text-center">
 
     <div class="row">
-        <div class=".col-sm-3">
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                {{title}}
+        <div class="col-sm-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    {{title}}
+                </div>
+                <div class="panel-body">
+                    <div id="jokePanel">
+                        {{{body}}}
+                    </div>
+                </div>
+                <button id="btnRandom" class="btn btn-warning btn-md">Random</button>
             </div>
-            <div class="panel-body">
-                <div id="jokePanel">
-                    {{{body}}}
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">Opret ny Joke</div>
+                <div class="form-group">
+                    <label for="setup">Setup:</label>
+                    <input type="text" class="form-control" id="setup">
+                </div>
+                <div class="form-group">
+                    <label for="punchline">Punchline:</label>
+                    <input type="text" class="form-control" id="punchline">
+                </div>
+                <button id="btnPost" class="btn btn-warning btn-md">post</button>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        Der er hentet Jokes fra Disse servere:
+                    </div>
+                    <div class="panel-body">
+
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
 
-    <div class="row text-align:justify">
-            <div class=".col-sm-3">
-                <button id="btnPrev" class="btn btn-warning btn-md"><< prev</button>
-                <button id="btnPost" class="btn btn-warning btn-md">post</button>
-                <button id="btnNext" class="btn btn-warning btn-md">next >></button>
-            </div>
-    </div>
+</div>
+</div>
 
-      <div class="row text-align:justify">
-          <div class="panel panel-warning">
-              <div class="panel-heading">Opret ny Joke</div>
-      <div class="form-group">
-          <label for="setup">Setup:</label>
-          <input type="text" class="form-control" id="setup">
-      </div>
-      <div class="form-group">
-          <label for="punchline">Punchline:</label>
-          <input type="text" class="form-control" id="punchline">
-      </div>
-              <button id="btnPost" class="btn btn-warning btn-md">post</button>
-  </div>
-      </div>
-  </div>
+
+</div>
 </body>
 </html>
