@@ -48,7 +48,7 @@ $(document).ready(function () {
     function postJoke() {
         var jokeData = {"setup": $('setup').text(), "punchline": $('punchline').text()};
 
-        if(data.setup && data.punchline) {
+        if(jokeData.setup && jokeData.punchline) {
             $.post({
                 type: "POST",
                 url: 'http://jokeService-jeppe-steen.herokuapp.com/api/jokes',
