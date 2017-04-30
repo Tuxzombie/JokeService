@@ -58,7 +58,7 @@ module.exports = function(express) {
             Joke.find({}, function(err, jokes) {
                 if(err) {
                     console.log("Error getting jokes from mongoDB");
-                    // res.json(global.otherJokes);
+                    res.json(global.otherJokes);
                 } else {
                     for(var i = 0; i < jokes.length; i++) {
                         currentJokes.push(jokes[i]);
@@ -67,7 +67,8 @@ module.exports = function(express) {
                         currentJokes.push(global.otherJokes[i]);
                     }
 
-                    res.json(currentJokes[randomInt(0, currentJokes.length)]);
+                    // res.json(currentJokes[randomInt(0, currentJokes.length)]);
+                    res.json(currentJokes);
                 }
             });
 
