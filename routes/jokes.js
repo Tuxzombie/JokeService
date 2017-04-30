@@ -55,15 +55,19 @@ module.exports = function(express) {
         //Henter tilfældig joke fra alle servere
             var currentJokes = [];
 
-
             Joke.find({}, function(err, jokes) {
                 if(err) {
                     console.log("Error getting jokes from mongoDB");
                     res.json(global.otherJokes);
                 } else {
-                    currentJokes.push(jokes);
-                    currentJokes.push(global.otherJokes);
-                    res.json(currentJokes);
+                    for(var i = 0; i < jokes.length; i++) {
+                        currentJokes.push(jokes[i]);
+                    }
+                    for(i = 0; i < global.otherJokes.length; i++) {
+                        currentJokes.push(global.otherJokes[i]);
+                    }
+
+                    res.json(currentJokes[randomInt(0, currentJokes.length)]);
                 }
             });
 

@@ -3,24 +3,18 @@
  */
 
 $(document).ready(function () {
-
-    var arrJokes = [];
-    var currentJoke = 0;
     var sectJokes = $('#jokePanel');
 
-    $.getJSON("/api/jokes", function (result) {
-        for(var i = 0; i < result.length; i++) {
-            arrJokes.push(result[i]);
-        }});
-
-    function setJoke() {
+    function setJoke(setup, punchline, fromServer) {
         sectJokes.empty();
         $.get('../views/index.hbs', function (template) {
             sectJokes.empty();
             var compiled = Handlebars.compile(template);
             var html = compiled({
-                    setup: arrJokes[currentJoke].setup,
-                    punchline: arrJokes[currentJoke].punchline });
+                setup: setup,
+                punchline: punchline,
+                fromServer: fromServer
+            });
             sectJokes.append(html);
         });
     }
@@ -28,12 +22,12 @@ $(document).ready(function () {
     function postJoke() {
         var jokeData = {"setup": $('#setup').val(), "punchline": $('#punchline').val()};
 
-        if(jokeData.setup && jokeData.punchline) {
+        if (jokeData.setup && jokeData.punchline) {
             $.post({
                 type: "POST",
                 url: 'https://jokeService-jeppe-steen.herokuapp.com/api/jokes',
                 data: jokeData,
-                success: function() {
+                success: function () {
                     alert("Your hilarious joke has been posted!")
                 },
                 dataType: 'json'
@@ -43,8 +37,15 @@ $(document).ready(function () {
         }
     }
 
-    $('#btnPost').click(function() {
+    $('#btnPost').click(function () {
         postJoke()
+    });
+
+    $('#btnRandom').click(function () {
+        $.getJSON("/api/randomjoke", function (result) {
+            setJoke(result.setup, result.punchline, result.fromServer);
+        });
+
     });
 
 });
