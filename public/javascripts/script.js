@@ -46,7 +46,7 @@ $(document).ready(function () {
     }
 
     function postJoke() {
-        var jokeData = {"setup": $('setup').text(), "punchline": $('punchline').text()};
+        var jokeData = {"setup": $('setup').val(), "punchline": $('punchline').val()};
 
         if(jokeData.setup.length > 0 && jokeData.punchline.length > 0) {
             $.post({
@@ -58,6 +58,7 @@ $(document).ready(function () {
                 },
                 dataType: 'json'
             });
+
         } else {
             alert("That is not a funny joke, punk! Jokes kinda need text to be funny!!")
         }
