@@ -51,7 +51,7 @@ $(document).ready(function () {
         if(jokeData.setup && jokeData.punchline) {
             $.post({
                 type: "POST",
-                url: 'http://jokeService-jeppe-steen.herokuapp.com/api/jokes',
+                url: 'https://jokeService-jeppe-steen.herokuapp.com/api/jokes',
                 data: JSON.stringify(jokeData),
                 success: function() {
                     alert("Your hilarious joke has been posted!")
