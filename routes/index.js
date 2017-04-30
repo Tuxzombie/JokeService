@@ -74,6 +74,7 @@ setInterval(function() {
     otherJokes = [];
     registerServerToJokeRegistry();
     requestServers();
+    global.otherJokes = otherJokes;
 }, 5000);
 
 
@@ -89,7 +90,5 @@ router.get('/', function (req, res, next) {
         fromServer: 'Local'
     });
 });
-
-global.otherJokes = otherJokes;
 
 module.exports = router;
