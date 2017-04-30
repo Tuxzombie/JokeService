@@ -46,14 +46,9 @@ var populateJokeArray = function() {
             } else if (response.statusCode == 200) {
                 console.log('Responded with statuscode: ' + response.statusCode);
                 console.log('Fetching jokes from server URL: ' + options.url);
-
+                otherJokes = [];
                                 for (var m = 0; m < jokeBody.length; m++) {
-                                    if (jokeBody[m].setup && jokeBody[m].punchline && !otherJokes.indexOf({
-                                            '_id' : jokeBody[m]._id,
-                                            'setup': jokeBody[m].setup,
-                                            'punchline': jokeBody[m].punchline,
-                                            'fromServer': 'Foreign joke!'
-                                        })) {
+                                    if (jokeBody[m].setup && jokeBody[m].punchline) {
                                         otherJokes.push(
                                             {
                                                 '_id' : jokeBody[m]._id,
