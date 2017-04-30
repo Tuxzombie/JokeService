@@ -35,10 +35,12 @@ var requestServers = function() {
 
 var populateJokeArray = function() {
     console.log("Henter Jokes, serverArray indeholder: "+otherJokeServices.length+" adresser");
+    otherJokes = [];
+
     for (var i = 0; i < otherJokeServices.length; i++) {
         var options = {json: true, url: otherJokeServices[i].address + 'api/jokes'};
         console.log(otherJokeServices[i].address);
-        otherJokes = [];
+
         request(options, function (error2, response, jokeBody) {
 
             if (error2) {
