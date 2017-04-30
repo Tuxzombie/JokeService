@@ -5,6 +5,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var request = require('request');
 var app = express();
 
 app.set('port', (process.env.PORT || 8080)); // Set the port
@@ -134,11 +135,11 @@ var populateJokeArray = function() {
     }
 };
 
+registerServerToJokeRegistry();
+
 setInterval(function() {
     otherJokeServices = [];
     otherJokes = [];
-
-    registerServerToJokeRegistry();
     requestServers();
 
     global.otherJokes = otherJokes;
