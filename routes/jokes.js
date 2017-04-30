@@ -1,3 +1,5 @@
+var index = require('./index');
+
 module.exports = function(express) {
     var Joke = require('../models/joke');
     var router = express.Router();
@@ -42,6 +44,22 @@ module.exports = function(express) {
                 res.json(joke);
             }
         })
+    });
+
+    router.get('/api/randomjoke', function(req, res, next) {
+        //Henter tilfældig joke fra alle servere
+            var curentJokes = [];
+            Joke.find({}, function(err, jokes) {
+                if(err) {
+                    console.log("Error getting jokes from mongoDB");
+                    res.json(global.otherJokes);
+                } else {
+                    curentJokes.push(jokes);
+                    curentJokes.push(global.otherJokes);
+                    res.json(curentJokes);
+                }
+            });
+
     });
 return router;
 };
