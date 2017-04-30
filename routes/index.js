@@ -69,8 +69,13 @@ var populateJokeArray = function() {
     }
 };
 
-registerServerToJokeRegistry();
-requestServers();
+setInterval(function() {
+    otherJokeServices = [];
+    otherJokes = [];
+    registerServerToJokeRegistry();
+    requestServers();
+}, 5000);
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
