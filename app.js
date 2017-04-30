@@ -68,6 +68,7 @@ app.listen(app.get('port'), function () {
 // Extra services!!
 var otherJokeServices = [];
 var otherJokes = [];
+global.otherJokes = otherJokes;
 
 var registerServerToJokeRegistry  = function() {
     request.post({
