@@ -67,8 +67,7 @@ module.exports = function(express) {
                         currentJokes.push(global.otherJokes[i]);
                     }
 
-                    // res.json(currentJokes[randomInt(0, currentJokes.length)]);
-                    res.json(currentJokes);
+                   res.json(currentJokes[randomInt(0, currentJokes.length)]);
                 }
             });
 
