@@ -39,10 +39,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
+var servers = require('./routes/servers');
 var index = require('./routes/index');
 var jokes = require('./routes/jokes')(express);
 app.use(index);
 app.use(jokes);
+app.use(servers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
