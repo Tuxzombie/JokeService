@@ -35,7 +35,7 @@ var requestServers = function() {
 
 var populateJokeArray = function() {
     console.log("Henter Jokes, serverArray indeholder: "+otherJokeServices.length+" adresser");
-    otherJokes = [];
+    // otherJokes = [];
 
     for (var i = 0; i < otherJokeServices.length; i++) {
         var options = {json: true, url: otherJokeServices[i].address + 'api/jokes'};
@@ -48,7 +48,6 @@ var populateJokeArray = function() {
             } else if (response.statusCode == 200) {
                 console.log('Responded with statuscode: ' + response.statusCode);
                 console.log('Fetching jokes from server URL: ' + options.url);
-
                                 for (var m = 0; m < jokeBody.length; m++) {
                                     if (jokeBody[m].setup && jokeBody[m].punchline) {
                                         otherJokes.push(
