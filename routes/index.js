@@ -54,7 +54,7 @@ var populateJokeArray = function() {
                                                 '_id' : jokeBody[m]._id,
                                                 'setup': jokeBody[m].setup,
                                                 'punchline': jokeBody[m].punchline,
-                                                'fromServer': options.url
+                                                'fromServer': 'Foreign joke!'
                                             });
                                     }
                                 }
@@ -79,7 +79,8 @@ router.get('/', function (req, res, next) {
     res.render('index', {
         title: 'Dad\'s Jokeservice',
         setup: 'Welcome to Dad\'s wild world of terrible jokes!',
-        punchline: '... So why couldn\'t the bicycle stand up by itself? It was two tired.'
+        punchline: '... So why couldn\'t the bicycle stand up by itself? It was two tired.',
+        fromServer: 'Local'
     });
 });
 

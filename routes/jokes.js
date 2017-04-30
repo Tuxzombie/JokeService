@@ -1,5 +1,9 @@
 var index = require('./index');
 
+var randomInt = function (low, high) {
+    return Math.floor(Math.random() * (high - low) + low);
+};
+
 module.exports = function(express) {
     var Joke = require('../models/joke');
     var router = express.Router();
@@ -19,7 +23,8 @@ module.exports = function(express) {
                     //Create joke
                     var newJoke = new Joke({
                         setup: req.body.setup,
-                        punchline: req.body.punchline
+                        punchline: req.body.punchline,
+                        fromServer: 'Local'
                     });
 
                     //Post enkelt joke til mongozzzz
@@ -48,15 +53,17 @@ module.exports = function(express) {
 
     router.get('/api/randomjoke', function(req, res, next) {
         //Henter tilfældig joke fra alle servere
-            var curentJokes = [];
+            var currentJokes = [];
+
+
             Joke.find({}, function(err, jokes) {
                 if(err) {
                     console.log("Error getting jokes from mongoDB");
                     res.json(global.otherJokes);
                 } else {
-                    curentJokes.push(jokes);
-                    curentJokes.push(global.otherJokes);
-                    res.json(curentJokes);
+                    currentJokes.push(jokes);
+                    currentJokes.push(global.otherJokes);
+                    res.json(currentJokes);
                 }
             });
 

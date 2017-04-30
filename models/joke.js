@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 
 var Joke = new Schema({
     setup: String,
-    punchline: String
+    punchline: String,
+    fromServer: String
 },  {collection: 'joke', versionKey: false});
 
 module.exports = mongoose.model('joke', Joke);

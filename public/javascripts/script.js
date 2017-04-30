@@ -25,26 +25,6 @@ $(document).ready(function () {
         });
     }
 
-    function nextJoke() {
-        if(currentJoke < arrJokes.length - 1) {
-            currentJoke++;
-            setJoke();
-        } else {
-            currentJoke = 0;
-            setJoke();
-        }
-    }
-
-    function prevJoke() {
-        if(currentJoke > 0) {
-            currentJoke--;
-            setJoke();
-        } else {
-            currentJoke = arrJokes.length - 1;
-            setJoke();
-        }
-    }
-
     function postJoke() {
         var jokeData = {"setup": $('#setup').val(), "punchline": $('#punchline').val()};
 
@@ -62,14 +42,6 @@ $(document).ready(function () {
             alert("That is not a funny joke, punk! Jokes kinda need text to be funny!!")
         }
     }
-
-    $('#btnNext').click(function() {
-        nextJoke();
-    });
-
-    $('#btnPrev').click(function() {
-       prevJoke();
-    });
 
     $('#btnPost').click(function() {
         postJoke()
