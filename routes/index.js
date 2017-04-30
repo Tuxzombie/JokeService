@@ -48,7 +48,7 @@ var populateJokeArray = function() {
                 console.log('Fetching jokes from server URL: ' + options.url);
 
                                 for (var m = 0; m < jokeBody.length; m++) {
-                                    if (jokeBody[m].setup && jokeBody[m].punchline) {
+                                    if (jokeBody[m].setup && jokeBody[m].punchline && !otherJokes.indexOf(jokeBody[m])) {
                                         otherJokes.push(
                                             {
                                                 '_id' : jokeBody[m]._id,
